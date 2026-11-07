@@ -1,0 +1,37 @@
+<mujoco model="basketball_bounce">
+  <compiler angle="radian" coordinate="local"/>
+
+  <option gravity="0 0 -9.81" timestep="0.002">
+    <flag contact="enable"/>
+  </option>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="cement_mat" texture="grid" texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+
+  <visual>
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.8 0.8 0.8" specular="0.1 0.1 0.1"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <default>
+    <default class="ball">
+      <geom type="sphere" size="0.12" mass="0.62" rgba="0.9 0.4 0.1 1"
+            solref="-15000 -12" solimp="0.99 0.999 0.001 0.5 2"/>
+    </default>
+    <default class="floor">
+      <geom type="plane" size="5 5 0.1" material="cement_mat"
+            friction="1.0 0.005 0.0001" solref="-15000 -12" solimp="0.99 0.999 0.001 0.5 2"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light directional="true" pos="0 0 4" dir="0 0 -1"/>
+    <geom name="cement_floor" class="floor"/>
+    <body name="basketball" pos="0 0 2.5">
+      <freejoint name="ball_joint"/>
+      <geom name="ball_geom" class="ball"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+
+# Confidential Business Products & Assets (Eden, Spoindo, Textures)
+01_SPOINDO24*
+02_EDEN*
+03_EDEN*
+eden_*
+spoindo24_*
+
+# Large External Assets (Mentor Jay 1.25GB Reference Assets)
+제이멘토_공식_3D모델_자산/
+blender-mcp-vibecoding/
+
+# Blender backup files
+*.blend1
+*.blend2
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

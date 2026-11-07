@@ -1,0 +1,37 @@
+<mujoco model="super_dense_steel_ball">
+  <compiler angle="radian" coordinate="local"/>
+
+  <option gravity="0 0 -9.81" timestep="0.002">
+    <flag contact="enable" energy="enable"/>
+  </option>
+
+  <asset>
+    <texture name="floor_tex" type="2d" builtin="checker" width="512" height="512" rgb1=".15 .2 .25" rgb2=".25 .3 .35"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="5 5" reflectance="0.2"/>
+    <material name="steel_mat" rgba="0.75 0.78 0.82 1" specular="0.95" shininess="0.95"/>
+  </asset>
+
+  <visual>
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.8 0.8 0.8" specular="0.2 0.2 0.2"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <default>
+    <default class="heavy_ball">
+      <geom type="sphere" size="0.25" mass="1000000" material="steel_mat"
+            solref="0.001 1" solimp="0.99 0.999 0.001 0.5 2"/>
+    </default>
+    <default class="floor">
+      <geom type="plane" size="5 5 0.1" material="floor_mat" friction="1.0 0.005 0.0001"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light directional="true" pos="0 0 5" dir="0 0 -1"/>
+    <geom name="floor" class="floor"/>
+    <body name="steel_ball" pos="0 0 3.0">
+      <freejoint name="steel_joint"/>
+      <geom name="steel_geom" class="heavy_ball"/>
+    </body>
+  </worldbody>
+</mujoco>
